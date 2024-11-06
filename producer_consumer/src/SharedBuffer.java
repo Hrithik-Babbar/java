@@ -18,10 +18,11 @@ public class SharedBuffer  {
                 wait();
             }
             buffer.add(num);
+            System.out.println("produced item");
             notify();
         }
         catch(Exception e){
-            System.out.println("exception");
+            System.out.println("exception while producing");
         }
     }
 
@@ -32,10 +33,11 @@ public class SharedBuffer  {
                 wait();
             }
             buffer.remove();
+            System.out.println("consumed item");
             notify();
         }
         catch(Exception e){
-            System.out.println("exception");
+            System.out.println("exception while consuming");
         }
     }
 }
