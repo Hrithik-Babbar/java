@@ -52,6 +52,9 @@ public class User {
     }
     public void deletePost(Double id) {
         this.posts.removeIf(item -> item.getId().equals(id));
+        this.followers.forEach(follower -> {
+            follower.removeFromFeed(post);
+        });
     }
     public void addToFeed(Post post){
         this.feeds.add(post);
@@ -64,5 +67,8 @@ public class User {
     }
     public List<Post> getFeed(){
         return this.feeds;
+    }
+    public void removeFromFeed(Post post){
+        this.feeds.remove(post);
     }
 }
