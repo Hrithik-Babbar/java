@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class EntryGate {
@@ -12,8 +13,8 @@ public class EntryGate {
         this.floors.add(floor);
     }
     public Ticket getTicket(Vehicle vehicle) {
-        lock.lock();
         try{
+            lock.tryLock(2, TimeUnit.SECONDS);
             for(Floor floor : floors){
                 int spotNumber = floor.findSpace(vehicle.getType());
                 if(spotNumber != -1){
