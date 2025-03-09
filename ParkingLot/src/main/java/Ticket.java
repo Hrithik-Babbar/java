@@ -1,7 +1,10 @@
+import lombok.Getter;
+
 import java.util.Date;
 import java.util.Random;
 
 public class Ticket {
+    @Getter
     private int ticketNumber;
     private Vehicle vehicle;
     private int spotNumber;
